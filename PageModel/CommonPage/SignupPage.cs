@@ -13,7 +13,6 @@ namespace MochaHomeAccounting.PageModel.CommonPage
     {
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         SoftAssert softAssert;
-        EmailHelper emailHelper;
         LoginPage loginPage;
         SettingPage settingPage;
         public SignupPage(BaseTestContext baseTestContext) : base(baseTestContext)

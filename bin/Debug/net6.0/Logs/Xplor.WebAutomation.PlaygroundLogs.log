@@ -1,0 +1,17 @@
+2024-10-10 19:30:30,394 [NonParallelWorker] INFO MochaHomeAccounting.Utilities.ExtentReporting - Check for Extent Report Object
+2024-10-10 19:30:30,404 [NonParallelWorker] INFO MochaHomeAccounting.Utilities.ExtentReporting - Creating the Extent Report Object
+2024-10-10 19:30:30,413 [NonParallelWorker] INFO MochaHomeAccounting.Utilities.ExtentReporting - The Extent Report directory C:\Users\sahba\OneDrive\Documents\Babulal_Docs\MochaSeleniumTests\MochaWeb\bin\Debug\net6.0\ExtentReports
+2024-10-10 19:30:30,413 [NonParallelWorker] INFO MochaHomeAccounting.Utilities.ExtentReporting - Creating the directory at C:\Users\sahba\OneDrive\Documents\Babulal_Docs\MochaSeleniumTests\MochaWeb\bin\Debug\net6.0\ExtentReports
+2024-10-10 19:30:31,301 [NonParallelWorker] INFO MochaHomeAccounting.Utilities.BaseTestLibrary.BaseTest - ************************************* Base Class Initialized block starts *************************
+2024-10-10 19:30:31,338 [NonParallelWorker] INFO MochaHomeAccounting.Utilities.BaseTestLibrary.BaseTest - ************************************* Base Class Initialized block ended *************************
+2024-10-10 19:30:32,084 [NonParallelWorker] INFO MochaHomeAccounting.Utilities.WebDriverLibraries.WebDriverLibrary - The WebDriver for Chrome
+2024-10-10 19:30:36,111 [NonParallelWorker] INFO MochaHomeAccounting.Utilities.WebDriverLibraries.ChromeDriverLib - Returning Chrome Driver object
+2024-10-10 19:30:43,143 [NonParallelWorker] INFO MochaHomeAccounting.Tests.SmokeSuites - Navigated to URL: https://mochaaccounting.com/
+2024-10-10 19:30:52,368 [NonParallelWorker] INFO MochaHomeAccounting.Tests.SmokeSuites - Clicked on Signup button
+2024-10-10 19:30:52,638 [NonParallelWorker] INFO MochaHomeAccounting.Tests.SmokeSuites - Entered Full Name
+2024-10-10 19:30:52,973 [NonParallelWorker] INFO MochaHomeAccounting.Tests.SmokeSuites - Entered Email Address
+2024-10-10 19:30:53,178 [NonParallelWorker] INFO MochaHomeAccounting.Tests.SmokeSuites - Entered Mobile Number
+2024-10-10 19:30:53,447 [NonParallelWorker] INFO MochaHomeAccounting.Tests.SmokeSuites - Entered Company Name
+2024-10-10 19:30:53,673 [NonParallelWorker] INFO MochaHomeAccounting.Tests.SmokeSuites - Entered Password
+2024-10-10 19:30:53,886 [NonParallelWorker] INFO MochaHomeAccounting.Tests.SmokeSuites - Entered Confirm Password
+2024-10-10 19:30:53,996 [NonParallelWorker] INFO MochaHomeAccounting.Tests.SmokeSuites - Clicked on Terms and Conditions
