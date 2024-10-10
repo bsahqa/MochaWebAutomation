@@ -1,4 +1,4 @@
-name: Playground_Smoke_Suites
+name: Mucha_Account_Pipeline
 
 on:
   workflow_dispatch:
