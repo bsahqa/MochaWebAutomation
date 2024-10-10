@@ -1,0 +1,58 @@
+name: Playground_Smoke_Suites
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    env:
+      BUILD_CONFIG: 'Release'
+      Solution_Name: MochaHomeAutomation.sln
+      Test_Project_Path: MochaHomeAccounting.csproj
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.Test_Project_Path }}
+
+    - name: Build the project
+      run: dotnet build ${{ env.Test_Project_Path }} --configuration ${{ env.BUILD_CONFIG }}
+
+    - name: Run tests
+      id: run_tests
+      run: |
+        dotnet test ${{ env.Test_Project_Path }} --configuration ${{ env.BUILD_CONFIG }} --logger "trx;LogFileName=test-results.trx" --results-directory ./TestResults || true
+        # Extract failed tests
+        dotnet tool install --global trx2junit
+        trx2junit ./TestResults/test-results.trx --outputdir ./TestResults
+        grep '<UnitTestResult outcome="Failed"' ./TestResults/test-results.xml | sed 's/.*executionId="\([^"]*\)".*/\1/' > failed-tests.txt
+
+    - name: Rerun failed tests
+      if: steps.run_tests.outcome == 'failure'
+      run: |
+        if [ -s failed-tests.txt ]; then
+          FAILED_TESTS=$(paste -sd ',' failed-tests.txt)
+          dotnet test ${{ env.Test_Project_Path }} --configuration ${{ env.BUILD_CONFIG }} --filter "FullyQualifiedName~$FAILED_TESTS" || true
+        else
+          echo "No failed tests to rerun."
+        fi
+
+    - name: Test Report
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: Test Reports
+        path: "./TestResults/test-results.trx"
+        reporter: dotnet-trx
+        fail-on-error: true
