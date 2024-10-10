@@ -1,15 +1,17 @@
 name: Mocha_CICD
 
 on:
- workflow_dispatch: # Keeping the manual trigger
+  workflow_dispatch:
+  
 jobs:
   build:
     runs-on: windows-latest
 
     env:
       BUILD_CONFIG: 'Release'
-      Solution_Name: MochaHomeAutomation.sln
+      Solution_Name: MochaWebAutomation.sln
       Test_Project_Path: MochaHomeAccounting.csproj
+
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -30,4 +32,11 @@ jobs:
     - name: Run tests
       run: dotnet test ${{ env.Test_Project_Path }} --configuration ${{ env.BUILD_CONFIG }} --logger "trx;LogFileName=test-results.trx" --results-directory ./TestReport/TestResults || true
 
-   
+    - name: Test Report
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: Test Reports
+        path: "./TestReport/TestResults/test-results.trx"
+        reporter: dotnet-trx
+        fail-on-error: true
