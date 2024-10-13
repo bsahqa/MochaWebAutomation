@@ -40,3 +40,7 @@ jobs:
         path: "./TestResults/test-results.trx"
         reporter: dotnet-trx
         fail-on-error: true
+    permissions:
+      id-token: write
+      contents: read
+      checks: write
