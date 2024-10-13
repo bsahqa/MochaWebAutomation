@@ -30,13 +30,13 @@ jobs:
       run: dotnet build ${{ env.Test_Project_Path }} --configuration ${{ env.BUILD_CONFIG }}
 
     - name: Run tests
-      run: dotnet test ${{ env.Test_Project_Path }} --configuration ${{ env.BUILD_CONFIG }} --logger "trx;LogFileName=test-results.trx" --results-directory ./TestReport/TestResults || true
+      run: dotnet test ${{ env.Test_Project_Path }} --configuration ${{ env.BUILD_CONFIG }} --logger "trx;LogFileName=test-results.trx" --results-directory ./TestResults || true
 
     - name: Test Report
       uses: dorny/test-reporter@v1
       if: always()
       with:
         name: Test Reports
-        path: "./TestReport/TestResults/test-results.trx"
+        path: "./TestResults/test-results.trx"
         reporter: dotnet-trx
         fail-on-error: true
