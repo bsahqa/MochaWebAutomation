@@ -1,0 +1,46 @@
+name: Mocha_CICD
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: windows-latest
+
+    env:
+      BUILD_CONFIG: 'Release'
+      Solution_Name: MochaWebAutomation.sln
+      Test_Project_Path: MochaHomeAccounting.csproj
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore ${{ env.Test_Project_Path }}
+
+    - name: Build the project
+      run: dotnet build ${{ env.Test_Project_Path }} --configuration ${{ env.BUILD_CONFIG }}
+
+    - name: Run tests
+      run: dotnet test ${{ env.Test_Project_Path }} --configuration ${{ env.BUILD_CONFIG }} --logger "trx;LogFileName=test-results.trx" --results-directory ./TestResults || true
+
+    - name: Test Report
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: Test Reports
+        path: "./TestResults/test-results.trx"
+        reporter: dotnet-trx
+        fail-on-error: true
+    permissions:
+      id-token: write
+      contents: read
+      checks: write
