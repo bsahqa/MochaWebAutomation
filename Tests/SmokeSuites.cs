@@ -52,34 +52,36 @@
         {
             try
             {
-                signupPage.ClickOnSignUpBtn();
-                LogInfoMessage(Log, "Clicked on Signup button");
-                signupPage.EnterFullName("Test User");
-                LogInfoMessage(Log, "Entered Full Name");
-                signupPage.EnterEmailAddress();
-                LogInfoMessage(Log, "Entered Email Address");
-                signupPage.EnterMobileNumber("1234567890");
-                LogInfoMessage(Log, "Entered Mobile Number");
-                signupPage.EnterCompanyName("TestCompany01");
-                LogInfoMessage(Log, "Entered Company Name");
-                signupPage.EnterPassword();
-                LogInfoMessage(Log, "Entered Password");
-                signupPage.EnterConfirmPassword();
-                LogInfoMessage(Log, "Entered Confirm Password");
-                signupPage.ClickOnTermsAndConditions();
-                LogInfoMessage(Log, "Clicked on Terms and Conditions");
-                signupPage.ClickOnSignUpButton();
-                LogInfoMessage(Log, "Clicked on Signup button");
-                signupPage.ValidateSignupMessage();
-                LogInfoMessage(Log, "Validated Signup message");
-                signupPage.VerifyEmail();
-                LogInfoMessage(Log, "Verified Email");
-                signupPage.ValidateLoginPageOpened();
-                LogInfoMessage(Log, "Validated Login Page opened");
+                this.signupPage.ClickOnSignUpBtn();
+                this.LogInfoMessage(Log, "Clicked on Signup button");
+                this.signupPage.ValidateSignupPageOpened();
+                this.LogInfoMessage(Log, "Signup Page Displayed");
+                this.signupPage.EnterFullName("Test User");
+                this.LogInfoMessage(Log, "Entered Full Name");
+                this.signupPage.EnterEmailAddress();
+                this.LogInfoMessage(Log, "Entered Email Address");
+                this.signupPage.EnterMobileNumber("1234567890");
+                this.LogInfoMessage(Log, "Entered Mobile Number");
+                this.signupPage.EnterCompanyName("TestCompany01");
+                this.LogInfoMessage(Log, "Entered Company Name");
+                this.signupPage.EnterPassword();
+                this.LogInfoMessage(Log, "Entered Password");
+                this.signupPage.EnterConfirmPassword();
+                this.LogInfoMessage(Log, "Entered Confirm Password");
+                this.signupPage.ClickOnTermsAndConditions();
+                this.LogInfoMessage(Log, "Clicked on Terms and Conditions");
+                this.signupPage.ClickOnSignUpButton();
+                this.LogInfoMessage(Log, "Clicked on Signup button");
+                this.signupPage.ValidateUserIsRegisteredSuccessfully();
+                this.LogInfoMessage(Log, "Validated Signup message");
+                this.signupPage.VerifyEmail();
+                this.LogInfoMessage(Log, "Verified Email");
+                this.signupPage.ValidateLoginPageOpened();
+                this.LogInfoMessage(Log, "Validated Login Page opened");
             }
             catch(Exception ex)
             {
-                LogFailureMessageWoScreenshot(Log, ex.Message);
+                this.LogFailureMessageWoScreenshot(Log, ex.Message);
             }
         }
 
@@ -100,6 +102,8 @@
                 this.LogInfoMessage(Log, $"Entered password: {loginPassword}");
                 this.loginPage.ClickLoginButton();
                 this.LogInfoMessage(Log, "Clicked on Login button");
+                this.loginPage.ValidateHoldOnMessageDisplayedAfterLogin();
+                this.LogInfoMessage(Log, "Hold On Message displayed");
                 this.dashboardPage.ValidateDashboardPageOpened();
                 this.LogInfoMessage(Log, "Dashboard page opened successfully");
             }
@@ -119,25 +123,25 @@
         {
             try
             {
-                loginPage.ValidateLogin(loginUsername, loginPassword);
-                settingPage.ValidateSettingPageOpened();
-                LogInfoMessage(Log, "Settings page is opened successfully");
-                settingPage.EnterCompanyLegalName("TestCompany01");
-                LogInfoMessage(Log, "Company Legal Name is entered successfully");
-                settingPage.EnterCompanyAddress("12 New Delhi");
-                LogInfoMessage(Log, "Company Address is entered successfully");
-                settingPage.SelectIndustryOption();
-                LogInfoMessage(Log, "Industry is selected successfully");
-                settingPage.ClickOnAccountDetails();
-                LogInfoMessage(Log, "Clicked on Account Details");
-                settingPage.ClickOnSaveButton();
-                LogInfoMessage(Log, "Clicked on Save button successfully");
-                settingPage.ValidateSettingsIsSaved();
-                LogInfoMessage(Log, "Settings are saved successfully");
+                this.loginPage.ValidateLogin(loginUsername, loginPassword);
+                this.settingPage.ValidateSettingPageOpened();
+                this.LogInfoMessage(Log, "Settings page is opened successfully");
+                this.settingPage.EnterCompanyLegalName("TestCompany01");
+                this.LogInfoMessage(Log, "Company Legal Name is entered successfully");
+                this.settingPage.EnterCompanyAddress("12 New Delhi");
+                this.LogInfoMessage(Log, "Company Address is entered successfully");
+                this.settingPage.SelectIndustryOption();
+                this.LogInfoMessage(Log, "Industry is selected successfully");
+                this.settingPage.ClickOnAccountDetails();
+                this.LogInfoMessage(Log, "Clicked on Account Details");
+                this.settingPage.ClickOnSaveButton();
+                this.LogInfoMessage(Log, "Clicked on Save button successfully");
+                this.settingPage.ValidateSettingsIsSaved();
+                this.LogInfoMessage(Log, "Settings are saved successfully");
             }
             catch(Exception ex)
             {
-                LogFailureMessageWoScreenshot(Log, ex.Message);
+                this.LogFailureMessageWoScreenshot(Log, ex.Message);
             }
         }
 
@@ -151,26 +155,26 @@
         {
             try
             {
-                loginPage.ValidateLogin(loginUsername, loginPassword);
-                customersPage.OpenCustomersPage();
-                customersPage.ClickOnCustomerType();
+                this.loginPage.ValidateLogin(loginUsername, loginPassword);
+                this.customersPage.OpenCustomersPage();
+                this.customersPage.ClickOnCustomerType();
                 this.LogInfoMessage(Log, "Clicked on Customer Type");
-                customersPage.ValidateCustomerTypePageOpened();
+                this.customersPage.ValidateCustomerTypePageOpened();
                 this.LogInfoMessage(Log, "Customer Type page opened successfully");
-                customersPage.ClickOnNewCustomerType();
+                this.customersPage.ClickOnNewCustomerType();
                 this.LogInfoMessage(Log, "Clicked on New Customer Type");
-                customersPage.EnterCustomerTypeName();
+                this.customersPage.EnterCustomerTypeName();
                 this.LogInfoMessage(Log, "Entered Customer Type Name");
-                customersPage.ClickOnAddCustomerType();
+                this.customersPage.ClickOnAddCustomerType();
                 this.LogInfoMessage(Log, "Clicked on Add Customer Type");
-                customersPage.ValidateCustomerTypeIsCreated();
+                this.customersPage.ValidateCustomerTypeIsCreated();
                 this.LogInfoMessage(Log, "Customer Type is created successfully");
-                customersPage.ValidateCustomerTypeIsDisplayed();
+                this.customersPage.ValidateCustomerTypeIsDisplayed();
                 this.LogInfoMessage(Log, "Customer Type is displayed successfully");
             }
             catch(Exception ex)
             {
-                LogFailureMessageWoScreenshot(Log, ex.Message);
+                this.LogFailureMessageWoScreenshot(Log, ex.Message);
             }
         }
 
@@ -184,24 +188,106 @@
         {
             try
             {
-                loginPage.ValidateLogin(loginUsername, loginPassword);
-                customersPage.OpenCustomersPage();
-                customersPage.ClickOnCustomerType();
+                this.loginPage.ValidateLogin(loginUsername, loginPassword);
+                this.customersPage.OpenCustomersPage();
+                this.customersPage.ClickOnCustomerType();
                 this.LogInfoMessage(Log, "Clicked on Customer Type");
-                customersPage.ClickOnEditCustomerType();
+                this.customersPage.ClickOnEditCustomerType();
                 this.LogInfoMessage(Log, "Clicked on Edit Customer Type");
-                customersPage.EnterCustomerTypeName();
+                this.customersPage.EnterCustomerTypeName();
                 this.LogInfoMessage(Log, "Entered Customer Type Name");
-                customersPage.ClickOnUpdateCustomerType();
+                this.customersPage.ClickOnUpdateCustomerType();
                 this.LogInfoMessage(Log, "Clicked on Update Customer Type");
-                customersPage.ValidateCustomerTypeIsUpdated();
+                this.customersPage.ValidateCustomerTypeIsUpdated();
                 this.LogInfoMessage(Log, "Customer Type is updated successfully");
-                customersPage.ValidateCustomerTypeIsDisplayed();
+                this.customersPage.ValidateCustomerTypeIsDisplayed();
                 this.LogInfoMessage(Log, "Customer Type is displayed successfully");
             }
             catch(Exception ex)
             {
-                LogFailureMessageWoScreenshot(Log, ex.Message);
+                this.LogFailureMessageWoScreenshot(Log, ex.Message);
+            }
+        }
+
+        [Test]
+        [Description("Test to validate all fields and error message are correctly displaying on Signup page")]
+        [Category("Smoke")]
+        [Property("TestCaseNumber", "Test Case 5")]
+        [Order(6)]
+        [Retry(2)]
+        public void VerifyAllFieldsAndValidationErrorMessageDisplayed()
+        {
+            this.signupPage.ClickOnSignUpBtn();
+            this.LogInfoMessage(Log, "Clicked on Signup button");
+            this.signupPage.ValidateSignupPageTitleIsVisible();
+            this.LogInfoMessage(Log, "Singup page is visible");
+            this.signupPage.ValidateFullnameLabelIsVisible();
+            this.LogInfoMessage(Log, "Fullname field is visible");
+            this.signupPage.ValidateEmailAddressLabelIsVisible();
+            this.LogInfoMessage(Log, "Email Address field is visible");
+            this.signupPage.ValidateMobileNumberLabelIsVisible();
+            this.LogInfoMessage(Log, "Mobile number field is visible");
+            this.signupPage.ValidateCompanyNameLabelIsVisible();
+            this.LogInfoMessage(Log, "Comapny field is visible");
+            this.signupPage.ValidateDomainLabelIsVisible();
+            this.LogInfoMessage(Log, "Domain field is visible");
+            this.signupPage.ValidatePasswordLabelIsVisible();
+            this.LogInfoMessage(Log, "Password field is visible");
+            this.signupPage.ValidateConfirmPasswordLabelIsVisible();
+            this.LogInfoMessage(Log, "Confirm password field is visible");
+            this.signupPage.ClickOnSignUpButton();
+            this.LogInfoMessage(Log, "Clicked on Signup button");
+            this.signupPage.ValidateFullnameErrorMsg();
+            this.LogInfoMessage(Log, "Fullname error message is visible");
+            this.signupPage.ValidateEmailAddressErrorMsg();
+            this.LogInfoMessage(Log, "Email address error message is visible");
+            this.signupPage.ValidateCompanyNameErrorMsg();
+            this.LogInfoMessage(Log, "Company Name error message is visible");
+            this.signupPage.ValidateDomainNameErrorMsg();
+            this.LogInfoMessage(Log, "Domain Name error message is visible");
+            this.signupPage.ValidatePasswordErrorMsg();
+            this.LogInfoMessage(Log, "Password error message is visible");
+            this.signupPage.ValidateConfirmPasswordErrorMsg();
+            this.LogInfoMessage(Log, "Confirm Password error message is visible");
+        }
+
+        [Test]
+        [Description("Test to validate all fields and error message are correctly displaying on Signup page")]
+        [Category("Smoke")]
+        [Property("TestCaseNumber", "Test Case 5")]
+        [Order(7)]
+        [Retry(2)]
+        public void VerifyCreateCustomerFunctionality()
+        {
+            try
+            {
+                this.loginPage.ValidateLogin(loginUsername, loginPassword);
+                this.customersPage.OpenCustomersPage();
+                this.customersPage.ClickOnCreateCustomer();
+                this.LogInfoMessage(Log, "Clicked Create Customer Button");
+                this.customersPage.EnterDisplayedName();
+                this.LogInfoMessage(Log, "Entered display name");
+                this.customersPage.EnterEmail();
+                this.LogInfoMessage(Log, "Entered email");
+                this.customersPage.EnterMobileNumber();
+                this.customersPage.EnterBillingAddress();
+                this.LogInfoMessage(Log, "Billing Address selected");
+                this.customersPage.EnterShippingAddress();
+                this.LogInfoMessage(Log, "Shipping address selected");
+                this.customersPage.SelectCustomerTypeValue();
+                this.LogInfoMessage(Log, "Customer type selected");
+                this.customersPage.SelectSelectDeliveryMethodValue();
+                this.LogInfoMessage(Log, "Delivery method selected");
+                this.customersPage.SelectSelectPaymentMethodOptionValue();
+                this.LogInfoMessage(Log, "Payment method selected");
+                this.customersPage.ClickOnSaveAndCloseBtn();
+                this.LogInfoMessage(Log, "Clicked Save and Close");
+                this.customersPage.ValidateNewCustomerIsCreatedSuccessfylly();
+                this.LogInfoMessage(Log, "New Customer is created successfull");
+            }
+            catch (Exception ex)
+            {
+                this.LogFailureMessageWoScreenshot(Log,ex.Message);
             }
         }
 

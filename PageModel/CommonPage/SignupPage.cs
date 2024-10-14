@@ -61,7 +61,114 @@ namespace MochaHomeAccounting.PageModel.CommonPage
         private static readonly By EmailVerificationLink = By.XPath("//a[contains(text(),'Verify Email Address')]");
         private static readonly By LoginPage = By.XPath("//p[contains(text(),'Login to your Mocha account')]");
 
-        
+        public void ValidateSignupPageOpened()
+        {
+            string actualSignupTitle = GetElementText(SignupPageTitle);
+            string expectedSignupTitle = "Create new account";
+            this.softAssert.IsContains("IsSignupPageDisplayed", expectedSignupTitle, actualSignupTitle);
+        }
+
+        public void ValidateSignupPageTitleIsVisible()
+        {
+            string actualSignupTitle = GetElementText(SignupPageTitle);
+            string expectedSignupTitle = "Create new account";
+            this.softAssert.IsContains("IsSignupPageDisplayed", expectedSignupTitle, actualSignupTitle);
+        }
+
+        public void ValidateFullnameLabelIsVisible()
+        {
+            string actualFullnameLabel = GetElementText(FullnameLbl);
+            string expectedFullnameLabel = "Full Name";
+            this.softAssert.IsContains("IsFullnameLabelDisplayed", expectedFullnameLabel, actualFullnameLabel);
+        }
+
+        public void ValidateEmailAddressLabelIsVisible()
+        {
+            string actualEmailAddressLabel = GetElementText(EmailAddressLbl);
+            string expectedEmailAddressLabel = "Email address";
+            this.softAssert.IsContains("IsEmailAddressLabelDisplayed", expectedEmailAddressLabel, actualEmailAddressLabel);
+        }
+
+        public void ValidateMobileNumberLabelIsVisible()
+        {
+            string actualMobileNumberLabel = GetElementText(MobileNumberLbl);
+            string expectedMobileNumberLabel = "Mobile Number";
+            this.softAssert.IsContains("IsMobileNumberLabelDisplayed", expectedMobileNumberLabel, actualMobileNumberLabel);
+        }
+
+        public void ValidateCompanyNameLabelIsVisible()
+        {
+            string actualCompanyNameLabel = GetElementText(CompanyNameLbl);
+            string expectedCompanyNameLabel = "Company Name";
+            this.softAssert.IsContains("IsCompanyNameLabelDisplayed", expectedCompanyNameLabel, actualCompanyNameLabel);
+        }
+
+        public void ValidateDomainLabelIsVisible()
+        {
+            string actualDomainLabel = GetElementText(DomainLbl);
+            string expectedDomainLabel = "Your Domain";
+            this.softAssert.IsContains("IsDomainLabelDisplayed", expectedDomainLabel, actualDomainLabel);
+        }
+
+        public void ValidatePasswordLabelIsVisible()
+        {
+            string actualPasswordLabel = GetElementText(PasswordLbl);
+            string expectedPasswordLabel = "Password";
+            this.softAssert.IsContains("IsPasswordLabelDisplayed", expectedPasswordLabel, actualPasswordLabel);
+        }
+
+        public void ValidateConfirmPasswordLabelIsVisible()
+        {
+            string actualConfirmPasswordLabel = GetElementText(ConfirmPasswordLbl);
+            string expectedConfirmPasswordLabel = "Confirm Password";
+            this.softAssert.IsContains("IsConfirmPasswordLabelDisplayed", expectedConfirmPasswordLabel, actualConfirmPasswordLabel);
+        }
+
+
+        public void ValidateFullnameErrorMsg()
+        {
+            string actualFullnameErrorMsg = GetElementText(FullnameErrorMsg);
+            string expectedFullnameErrorMsg = "Full name is required.";
+            this.softAssert.IsContains("IsFullnameErrorDisplayed", expectedFullnameErrorMsg, actualFullnameErrorMsg);
+        }
+
+        public void ValidateEmailAddressErrorMsg()
+        {
+            string actualEmailAddressErrorMsg = GetElementText(EmailAddressErrorMsg);
+            string expectedEmailAddressErrorMsg = "Email is required.";
+            this.softAssert.IsContains("IsEmailAddressErrorDisplayed", expectedEmailAddressErrorMsg, actualEmailAddressErrorMsg);
+        }
+
+        public void ValidateCompanyNameErrorMsg()
+        {
+            string actualCompanyNameErrorMsg = GetElementText(CompanyNameErrorMsg);
+            string expectedCompanyNameErrorMsg = "Company Name is required.";
+            this.softAssert.IsContains("IsCompanyNameErrorDisplayed", expectedCompanyNameErrorMsg, actualCompanyNameErrorMsg);
+        }
+
+        public void ValidateDomainNameErrorMsg()
+        {
+            string actualDomainNameErrorMsg = GetElementText(DomainNameErrorMsg);
+            string expectedDomainNameErrorMsg = "Domain prefix is required.";
+            this.softAssert.IsContains("IsDomainNameErrorDisplayed", expectedDomainNameErrorMsg, actualDomainNameErrorMsg);
+        }
+
+        public void ValidatePasswordErrorMsg()
+        {
+            string actualPasswordErrorMsg = GetElementText(PasswordErrorMsg);
+            string expectedPasswordErrorMsg = "Password is required";
+            this.softAssert.IsContains("IsPasswordErrorDisplayed", expectedPasswordErrorMsg, actualPasswordErrorMsg);
+        }
+
+        public void ValidateConfirmPasswordErrorMsg()
+        {
+            string actualConfirmPasswordErrorMsg = GetElementText(ConfirmPasswordErrorMsg);
+            string expectedConfirmPasswordErrorMsg = "Confirm password is required";
+            this.softAssert.IsContains("IsConfirmPasswordErrorDisplayed", expectedConfirmPasswordErrorMsg, actualConfirmPasswordErrorMsg);
+        }
+
+
+
         public void ClickOnSignUpBtn()
         {
             ClickElement(SignupBtn);
@@ -116,7 +223,7 @@ namespace MochaHomeAccounting.PageModel.CommonPage
             ExcelUtility.WriteLoginCredentials(emailAddress, password);
         }
 
-        public void ValidateSignupMessage()
+        public void ValidateUserIsRegisteredSuccessfully()
         {
             this.WaitForElementToBeLoaded();
             string actualSignupMessage = GetElementText(SignUpSuccessMessage);
@@ -169,7 +276,7 @@ namespace MochaHomeAccounting.PageModel.CommonPage
             LogInfoMessage(Log, "Clicked on Terms and Conditions");
             ClickOnSignUpButton();
             LogInfoMessage(Log, "Clicked on Signup button");
-            ValidateSignupMessage();
+            ValidateUserIsRegisteredSuccessfully();
             LogInfoMessage(Log, "Validated Signup message");
             VerifyEmail();
             LogInfoMessage(Log, "Verified Email");
