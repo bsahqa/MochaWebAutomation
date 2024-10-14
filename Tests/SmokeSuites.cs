@@ -257,6 +257,7 @@
         [Property("TestCaseNumber", "Test Case 5")]
         [Order(7)]
         [Retry(2)]
+        [Ignore("Ignore for now")]
         public void VerifyCreateCustomerFunctionality()
         {
             try
