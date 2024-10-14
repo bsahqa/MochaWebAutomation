@@ -257,7 +257,7 @@
         [Property("TestCaseNumber", "Test Case 5")]
         [Order(7)]
         [Retry(2)]
-        public void VerifyCreateCustomerFunctionality()
+        public void VerifyUserCanCreateCustomer()
         {
             try
             {
