@@ -150,7 +150,6 @@ namespace MochaHomeAccounting.PageModel.SalesPage
         public void ClickOnCreateCustomer()
         {
             ClickElement(CreateCustomerBtn);
-            this.WaitForElementToBeLoaded();
         }
 
         public void ClickOnNewCustomerType()
