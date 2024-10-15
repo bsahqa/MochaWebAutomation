@@ -7,16 +7,6 @@
     using System.Threading.Tasks;
     public enum Menus
     {
-        Dashboard,
-        Moments,
-        Posts,
-        Documents,
-        Canvas,
-        Tables,
-        Children,
-        Educators,
-        Rooms,
-        Reports
+        Dashboard
     }
-
 }

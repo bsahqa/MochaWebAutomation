@@ -20,8 +20,7 @@ namespace MochaHomeAccounting.PageModel.CommonPage
         private static readonly By SaveBtn = By.XPath("//button[@type='submit']");
         private static readonly By DashboardBtn = By.XPath("//a[@href='/dashboard']");
         private static readonly By AccountDetails = By.XPath("//p[contains(text(),'Accounting Details')]");
-
-
+        private static readonly By ZipCode = By.XPath("//input[@label='Zip *']");
 
         public void ValidateSettingPageOpened()
         {
@@ -35,10 +34,17 @@ namespace MochaHomeAccounting.PageModel.CommonPage
             EnterText(CompanyLegalName, legalName);
         }
 
+        public void TypeZipCode()
+        {
+            this.EnterText(ZipCode, "201304");
+        }
+
         public void EnterCompanyAddress(string address)
         {
-            EnterText(CompanyAddress, address);
-            ClickElement(SelectAddress);
+            this. EnterText(CompanyAddress, address);
+            this.ClickElement(SelectAddress);
+            Task.Delay(3000).Wait();
+            this.TypeZipCode();
         }
 
         public void SelectIndustryOption()

@@ -52,8 +52,6 @@ namespace MochaHomeAccounting.PageModel.CommonPage
         private static readonly By PasswordErrorMsg = By.XPath("//p[contains(text(),'Password is required')]");
         private static readonly By ConfirmPasswordErrorMsg = By.XPath("//p[contains(text(),'Confirm password is required')]");
 
-
-
         // Email Verification objects
         private static readonly By EmailField = By.Id("login");
         private static readonly By CheckEmailBtn = By.Id("refreshbut");
@@ -221,6 +219,12 @@ namespace MochaHomeAccounting.PageModel.CommonPage
             Task.Delay(5000).Wait();
             ClickElement(SignUpBtn);
             ExcelUtility.WriteLoginCredentials(emailAddress, password);
+        }
+
+        public void ClickOnSubmitButton()
+        {
+            Task.Delay(5000).Wait();
+            ClickElement(SignUpBtn);
         }
 
         public void ValidateUserIsRegisteredSuccessfully()

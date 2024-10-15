@@ -51,14 +51,14 @@ namespace MochaHomeAccounting.PageModel.SalesPage
         public void EnterDisplayedName()
         {
             Thread.Sleep(5000);
-            this.EnterTextBySelection(DisplayedName, "Babulal");
+            this.EnterTextBySelection(DisplayedName, data.Name.FullName());
             Thread.Sleep(2000);
         }
 
         public void EnterEmail()
         {
             this.WaitForElementToBeLoaded();
-            this.EnterTextBySelection(Email, "test654@yopmail.com");
+            this.EnterTextBySelection(Email, data.Name.FirstName() + "@yopmail.com");
             Thread.Sleep(2000);
         }
 
@@ -116,7 +116,6 @@ namespace MochaHomeAccounting.PageModel.SalesPage
             string expectedSuccessMsg = "Successfully created.";
             this.softAssert.IsContains("IsCustomerCreated", expectedSuccessMsg, actualSuccessMsg);
         }
-
         public void ClickOnSales()
         {
             this.WaitForElementToBeLoaded();

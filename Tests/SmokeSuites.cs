@@ -7,6 +7,7 @@
     using MochaHomeAccounting.PageModel.DashboardPage;
     using MochaHomeAccounting.PageModel.CommonPage;
     using MochaHomeAccounting.PageModel.SalesPage;
+    using Bogus;
 
     [TestFixture]
     [Parallelizable(ParallelScope.None)]
@@ -23,6 +24,8 @@
         private CustomersPage? customersPage;
         string loginUsername;
         string loginPassword;
+        Faker data;
+
 
         [SetUp]
         public void TestSetup()
@@ -33,6 +36,7 @@
             this.settingPage = new SettingPage(this.baseTestContext);
             this.dashboardPage = new DashboardPage(this.baseTestContext);
             this.customersPage = new CustomersPage(this.baseTestContext);
+            data=new Faker();
             this.driver = this.baseTestContext.Driver;
             this.driver.Navigate().GoToUrl(Url);
             this.LogInfoMessage(Log, $"Navigated to URL: {Url}");
@@ -56,13 +60,13 @@
                 this.LogInfoMessage(Log, "Clicked on Signup button");
                 this.signupPage.ValidateSignupPageOpened();
                 this.LogInfoMessage(Log, "Signup Page Displayed");
-                this.signupPage.EnterFullName("Test User");
+                this.signupPage.EnterFullName(data.Name.FullName());
                 this.LogInfoMessage(Log, "Entered Full Name");
                 this.signupPage.EnterEmailAddress();
                 this.LogInfoMessage(Log, "Entered Email Address");
-                this.signupPage.EnterMobileNumber("1234567890");
+                this.signupPage.EnterMobileNumber(data.Phone.PhoneNumber());
                 this.LogInfoMessage(Log, "Entered Mobile Number");
-                this.signupPage.EnterCompanyName("TestCompany01");
+                this.signupPage.EnterCompanyName(data.Company.CompanyName());
                 this.LogInfoMessage(Log, "Entered Company Name");
                 this.signupPage.EnterPassword();
                 this.LogInfoMessage(Log, "Entered Password");
@@ -126,7 +130,7 @@
                 this.loginPage.ValidateLogin(loginUsername, loginPassword);
                 this.settingPage.ValidateSettingPageOpened();
                 this.LogInfoMessage(Log, "Settings page is opened successfully");
-                this.settingPage.EnterCompanyLegalName("TestCompany01");
+                this.settingPage.EnterCompanyLegalName("Test Comapany");
                 this.LogInfoMessage(Log, "Company Legal Name is entered successfully");
                 this.settingPage.EnterCompanyAddress("12 New Delhi");
                 this.LogInfoMessage(Log, "Company Address is entered successfully");
@@ -235,7 +239,7 @@
             this.LogInfoMessage(Log, "Password field is visible");
             this.signupPage.ValidateConfirmPasswordLabelIsVisible();
             this.LogInfoMessage(Log, "Confirm password field is visible");
-            this.signupPage.ClickOnSignUpButton();
+            this.signupPage.ClickOnSubmitButton();
             this.LogInfoMessage(Log, "Clicked on Signup button");
             this.signupPage.ValidateFullnameErrorMsg();
             this.LogInfoMessage(Log, "Fullname error message is visible");
@@ -270,6 +274,7 @@
                 this.customersPage.EnterEmail();
                 this.LogInfoMessage(Log, "Entered email");
                 this.customersPage.EnterMobileNumber();
+                this.LogInfoMessage(Log, "Entered mobile number");
                 this.customersPage.EnterBillingAddress();
                 this.LogInfoMessage(Log, "Billing Address selected");
                 this.customersPage.EnterShippingAddress();
