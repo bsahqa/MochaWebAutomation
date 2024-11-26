@@ -2,10 +2,10 @@ name: Mocha_CICD
 
 on:
   workflow_dispatch:
-
+  
 jobs:
   build:
-    runs-on: ubuntu-latest  # Using Ubuntu
+    runs-on: windows-latest
 
     env:
       BUILD_CONFIG: 'Release'
@@ -22,36 +22,6 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
-
-    - name: Install Chrome dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y \
-          wget \
-          curl \
-          unzip \
-          xdg-utils \
-          libx11-xcb1 \
-          libxcomposite1 \
-          libxrandr2 \
-          libasound2 \
-          libatk-bridge2.0-0 \
-          libatk1.0-0 \
-          libcups2 \
-          libnss3 \
-          libgbm1 \
-          libxss1 \
-          libgdk-pixbuf2.0-0 \
-          libsecret-1-0 \
-          google-chrome-stable
-
-    - name: Install ChromeDriver
-      run: |
-        VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
-        wget https://chromedriver.storage.googleapis.com/$VERSION/chromedriver_linux64.zip
-        unzip chromedriver_linux64.zip
-        sudo mv chromedriver /usr/local/bin/
-        sudo chmod +x /usr/local/bin/chromedriver
 
     - name: Restore dependencies
       run: dotnet restore ${{ env.Test_Project_Path }}
@@ -70,7 +40,6 @@ jobs:
         path: "./TestResults/test-results.trx"
         reporter: dotnet-trx
         fail-on-error: true
-        
     permissions:
       id-token: write
       contents: read
