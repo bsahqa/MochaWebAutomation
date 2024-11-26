@@ -2,10 +2,10 @@ name: Mocha_CICD
 
 on:
   workflow_dispatch:
-  
+
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest  # Changed from windows-latest to ubuntu-latest
 
     env:
       BUILD_CONFIG: 'Release'
@@ -40,6 +40,7 @@ jobs:
         path: "./TestResults/test-results.trx"
         reporter: dotnet-trx
         fail-on-error: true
+        
     permissions:
       id-token: write
       contents: read
